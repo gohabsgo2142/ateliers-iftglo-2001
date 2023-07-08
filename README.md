@@ -5,5 +5,5 @@ Ateliers pour les cours IFT-2001: Systèmes d'exploitation et GLO-2001: Système
 ## Clone
 
 ```
-git clone --recurse-submodules https://github.com/willGuimont/ateliers-iftglo-2001/tree/master
+git clone --recurse-submodules https://github.com/willGuimont/ateliers-iftglo-2001/
 ```
