@@ -1,0 +1,24 @@
+services:
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    expose:
+      - 5432
+    volumes:
+      - db:/var/lib/postgresql/data
+  api:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - 8081:8081
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db
+    entrypoint: bash -c "sleep 5 && ./rust_api"
+volumes:
+  db:
+    driver: local

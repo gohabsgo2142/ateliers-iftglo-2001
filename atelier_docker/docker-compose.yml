@@ -1,0 +1,23 @@
+version: '3'
+services:
+  python_app:
+    build:
+      context: ./python_app
+    tty: true
+    stdin_open: true
+    depends_on:
+      - status-checker
+    ports:
+      - 8000:8000
+
+  rust_api:
+    build:
+      context: ./rust_api
+    ports:
+      - 8081:8081
+
+  status-checker:
+    build:
+      context: ./status-checker
+    ports:
+      - 8080:8080

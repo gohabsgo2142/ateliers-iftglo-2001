@@ -1,0 +1,3 @@
+[submodule "atelier_bash/files/server"]
+	path = atelier_bash/files/server
+	url = git@github.com:willGuimont/ateliers-iftglo-2001-server.git
