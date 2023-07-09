@@ -1,15 +1,20 @@
 #!/bin/env bash
 
-if [ ! -x ~/server/test.sh ]; then
+if [ ! -x ~/test.sh ]; then
     echo "Incorrect! test.sh n'est pas exécutable"
     exit 1
 fi
 
-cd ~/.hidden
-rm main.py > /dev/null 2>&1
-cp main_broken.py main.py
+mv ~/server/main.py ~/server/main.py.bak
 
-~/server/test.sh > /dev/null 2>&1
+revert_backup() {
+  mv ~/server/main.py.bak ~/server/main.py
+}
+trap revert_backup EXIT
+
+cp -f ~/.hidden/main_broken.py ~/server/main.py
+
+~/test.sh > /dev/null 2>&1
 
 if [ $? -eq 1 ]; then
   echo "Correct: Code de retour 1 quand le serveur est cassé"
@@ -17,14 +22,12 @@ else
   echo "Incorrect: Code de retour 0 quand le serveur est cassé, devrait être 1"
 fi
 
-cp main_working.py main.py
+cp -f ~/.hidden/main_working.py ~/server/main.py
 
-~/server/test.sh > /dev/null 2>&1
+~/test.sh > /dev/null 2>&1
 
 if [ $? -eq 0 ]; then
   echo "Correct: Code de retour 0 quand le serveur est fonctionnel"
 else
   echo "Incorrect: Code de retour 1 quand le serveur est fonctionnel, devrait être 0"
 fi
-
-rm main.py
