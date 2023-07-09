@@ -1,20 +1,19 @@
 #!/bin/env bash
 
-./ApplicationData/output/logs/diagnostic.sh
+~/ApplicationData/output/logs/diagnostic.sh > /dev/null 2>&1
 
-./ApplicationData/output/logs/cleanup.sh
-
-correction_05.sh
-if [ $? -eq 0 ]; then
-    correction_06.sh
-    if [ $? -eq 0 ]; then
-        echo "Correct!"
-    else
-        echo "Incorrect!"
-        exit 1
-    fi
-else
-    echo "Incorrect!"
+if [ ! -f ~/ApplicationData/output/logs/cleanup.sh ]; then
+    echo "Incorrect! cleanup.sh n'existe pas"
     exit 1
 fi
 
+if [ ! -x ~/ApplicationData/output/logs/cleanup.sh ]; then
+    echo "Incorrect! cleanup.sh n'est pas exécutable"
+    exit 1
+fi
+
+
+~/ApplicationData/output/logs/cleanup.sh > /dev/null 2>&1
+
+correction_05.sh
+correction_06.sh

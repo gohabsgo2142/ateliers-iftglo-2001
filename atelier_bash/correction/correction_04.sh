@@ -1,10 +1,8 @@
 #!/bin/env bash
 
-file_path="~/ApplicationData/output/logs/diagnostic.sh"
-
-if [[ -x "$file_path" ]]; then
+if [ -x ~/ApplicationData/output/logs/diagnostic.sh ]; then
     echo "Correct!"
 else
-    echo "Incorrect!"
+    echo "Incorrect! diagnostic.sh n'est pas exécutable"
     exit 1
 fi
