@@ -14,5 +14,4 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
-cd ~
-git clone https://github.com/willGuimont/ateliers-iftglo-2001-server server
+git clone https://github.com/willGuimont/ateliers-iftglo-2001-server ~/server
