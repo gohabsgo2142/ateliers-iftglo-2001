@@ -6,8 +6,6 @@ revert_last_commit() {
   git reset HEAD~1 --hard
 }
 
-~/test.sh > /dev/null 2>&1
-
 exit_status=1
 # TODO faire une boucle while tant que $exit_status n'est pas egal a 0
 # A chaque iteration, executez le script test.sh
