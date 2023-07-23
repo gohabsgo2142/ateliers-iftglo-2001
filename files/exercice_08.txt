@@ -11,6 +11,5 @@ du   :
 curl :
 sed  :
 awk  :
-xargs:
 kill :
 sleep:

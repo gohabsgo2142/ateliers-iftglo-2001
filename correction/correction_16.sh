@@ -2,16 +2,16 @@
 
 cd ~/server
 
-uvicorn main:app & > /dev/null 2>&1
+uvicorn main:app &> /dev/null &
 
 server_pid=$!
 stop_server() {
-  kill $server_pid
+  kill $server_pid &> /dev/null
 }
 trap stop_server EXIT
 sleep 1
 
-curl localhost:8000
+curl localhost:8000 &> /dev/null
 
 if [ $? -eq 0 ]; then
   echo "Correct! Le server est fonctionnel"

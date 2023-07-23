@@ -9,12 +9,12 @@
 num_files=$(find ~/ApplicationData/output/logs -maxdepth 1 -name "*.out" | wc -l)
 
 if [[ $num_files -eq 0 ]]; then
-    num_files=$(find ~/ApplicationData/output/logs/output -maxdepth 1 -name "*.out" | wc -l)
+    num_files=$(find ~/ApplicationData/output/logs/output_backup -maxdepth 1 -name "*.out" | wc -l)
     if [[ $num_files -eq 10 ]]; then
         echo "Correct!"
     else
         echo "Incorrect!"
-        echo "Les fichiers *.out ne sont pas dans output"
+        echo "Les fichiers *.out ne sont pas dans output_backup"
         exit 1
     fi
 else
