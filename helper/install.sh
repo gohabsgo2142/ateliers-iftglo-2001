@@ -1,5 +1,6 @@
 sudo apt update; sudo apt install -y python3-pip git curl vim debootstrap
 pip3 install "fastapi[all]" "uvicorn[standard]"
+git clone https://github.com/willGuimont/ateliers-iftglo-2001-server ~/server
 
 # Install docker
 sudo apt update
@@ -17,5 +18,3 @@ sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin d
 sudo getent group docker || sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
-
-git clone https://github.com/willGuimont/ateliers-iftglo-2001-server ~/server
