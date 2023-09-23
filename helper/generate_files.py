@@ -17,10 +17,7 @@ random_reasons = [
     'Not enough ROM',
 ]
 
-error_messages = []
-for i in [400, 403, 404, 500]:
-    error_messages.append('Error ' + str(i))
-
+error_messages = [f'Error {str(i)}' for i in [400, 403, 404, 500]]
 error_count = 0
 with open('files/ApplicationData/output/logs/messages.txt', 'w') as f:
     for i in range(100):
@@ -49,16 +46,16 @@ with open('files/ApplicationData/db.tsv', 'w') as f:
 
 for i in range(10):
     with open(f'files/Documents/file{i}.txt', 'w') as f:
-        for j in range(random.randint(1, 100)):
+        for _ in range(random.randint(1, 100)):
             f.write(generate_random_string(50) + '\n')
 
 for i in range(10):
     with open(f'files/Documents/Downloads/download{i}.bin', 'wb') as f:
-        for j in range(random.randint(1, 256)):
+        for _ in range(random.randint(1, 256)):
             f.write(str.encode(generate_random_string(50)))
 
 for i in range(10):
     with open(f'files/Documents/Desktop/{i}.ico', 'wb') as f:
-        for j in range(random.randint(1, 10)):
+        for _ in range(random.randint(1, 10)):
             f.write(str.encode(generate_random_string(10)))
 
